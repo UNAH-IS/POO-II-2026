@@ -1,0 +1,147 @@
+Programación Orientada a Objetos (POO)
+
+Paradigmas de Programación
+    - Procedimental: Pascal, C, Fortran
+    - Funcional: Haskell, Lisp, Erlang, Javascript
+    - Orientada a Objetos (POO): Java, C++, Python, Ruby, C#, Swift, Kotlin, PHP, Dart, Go, Typescript
+    - Lógica: Prolog
+
+Java: Lenguaje compilado, fuertemente tipado, POO, aplicaciones de escritorio, aplicaciones web, aplicaciones móviles (Android), desarrollo de videojuegos, sistemas embebidos, aplicaciones empresariales, desarrollo de software a gran escala.
+
+Javascript: Lenguaje interpretado, débilmente tipado, POO, desarrollo web (frontend y backend), aplicaciones móviles (React Native), desarrollo de videojuegos, aplicaciones de escritorio (Electron), desarrollo de software a gran escala.
+
+Lenguajes compilados: Java, C++, C#, Swift, Kotlin, Go, Rust
+Lenguajes interpretados: Javascript, Python, Ruby, PHP, Dart
+
+Fuertemente tipados: Java, C++, C#, Swift, Kotlin, Go, Rust:
+    int a = 4;
+    String nombre = "Juan";
+    double pi = 3.14;
+
+Debilmente tipados: Javascript, Python, Ruby, PHP, Dart:
+    var a = 4;
+    var nombre = "Juan";
+    var pi = 3.14;
+    a = "Hola";
+    a = [1, 2, 3];
+
+
+
+Herramientas necesito para programar en java:
+
+1. JDK (Java Development Kit): Es el kit de desarrollo que incluye el compilador de Java, la máquina virtual Java (JVM) y otras herramientas necesarias para desarrollar aplicaciones en Java. Puedes descargarlo desde el sitio oficial de Oracle o usar una distribución alternativa como OpenJDK.
+    Compilar: javac MiPrograma.java  => MiPrograma.class
+    Ejecutar: java MiPrograma
+
+2. IDE (Integrated Development Environment): Un entorno de desarrollo integrado que facilita la escritura, depuración y gestión de proyectos en Java. Algunos IDE populares para Java son:
+    - Eclipse
+    - IntelliJ IDEA
+    - NetBeans
+    - Visual Studio Code (con extensiones para Java):
+            Instalar la extensión "Extension Pack for Java" que incluye varias herramientas útiles para el desarrollo en Java.
+            Nuevo proyecto Java: Ctrl + Shift + P -> Java: Create Java Project
+  
+
+Función/Metodo:
+    Componente que se encarga de realizar una tarea específica dentro de un programa. Las funciones pueden recibir parámetros de entrada y devolver un resultado. Son fundamentales para organizar el código y evitar la repetición.
+
+Estandares de codificacion en Java:
+    1. Nombres de clases: Deben comenzar con mayúscula y seguir el formato Upper CamelCase (ejemplo: MiClase).
+    2. Nombres de métodos: Deben comenzar con minúscula y seguir el formato lower camelCase (ejemplo: miMetodo()).
+    3. Nombres de variables: Deben comenzar con minúscula y seguir el formato lower camelCase (ejemplo: miVariable).
+    4. Constantes: Deben escribirse en mayúsculas y usar guiones bajos para separar palabras (Snake Case)(ejemplo: MI_CONSTANTE).
+
+
+Clases: Plantillas o moldes que definen las características y comportamientos de los objetos. Una clase puede contener atributos (variables) y métodos (funciones) que operan sobre esos atributos. Las clases son la base de la programación orientada a objetos (POO) y permiten crear objetos que representan entidades del mundo real.
+
+
+Ejemplos clases:
+    Computadora, Persona, Coche, Animal, Libro, etc. Cada una de estas clases puede tener atributos específicos (por ejemplo, una clase Persona puede tener atributos como nombre, edad y género) y métodos que definen su comportamiento (por ejemplo, una clase Coche puede tener un método para acelerar o frenar).
+    
+
+Computadora:
+    Atributos: marca, modelo, procesador, memoria RAM, almacenamiento.
+    Métodos: encender(), apagar(), reiniciar(), ejecutarPrograma().
+
+        public class Computadora {
+            String marca;
+            String modelo;
+            String procesador;
+            int memoriaRAM;
+            int almacenamiento;
+
+            public void encender() {
+                System.out.println("La computadora se ha encendido.");
+            }
+
+            public void apagar() {
+                System.out.println("La computadora se ha apagado.");
+            }
+
+            public void reiniciar() {
+                System.out.println("La computadora se está reiniciando.");
+            }
+
+            public void ejecutarPrograma(String programa) {
+                System.out.println("Ejecutando el programa: " + programa);
+            }
+        }
+
+Persona:
+    Atributos: nombre, edad, género, altura, peso.
+    Métodos: hablar(), caminar(), comer(), dormir().
+
+    public class Persona {
+        String nombre;
+        int edad;
+        String genero;
+        double altura;
+        double peso;
+
+        public void hablar(String mensaje) {
+            System.out.println(nombre + " dice: " + mensaje);
+        }
+
+        public void caminar() {
+            System.out.println(nombre + " está caminando.");
+        }
+
+        public void comer(String comida) {
+            System.out.println(nombre + " está comiendo " + comida + ".");
+        }
+
+        public void dormir() {
+            System.out.println(nombre + " está durmiendo.");
+        }
+    }
+
+Carro:
+    Atributos: marca, modelo, año, color, velocidad.
+    Métodos: acelerar(), frenar(), girar(), encender(), apagar().
+
+Animal:
+    Atributos: especie, edad, tamaño, color, peso.
+    Métodos: comer(), dormir(), moverse(), emitirSonido().
+
+
+Importante: Una clase sería un nuevo tipo de dato, es decir, un nuevo tipo de variable. 
+Por ejemplo, si creamos una clase llamada "Alumno", estaríamos definiendo un nuevo tipo de 
+dato que representa a un alumno con sus atributos y métodos específicos. 
+Luego, podríamos crear variables de tipo "Alumno" para almacenar información sobre 
+diferentes alumnos en nuestro programa.
+
+Modificadores de acceso: sirven para controlar la visibilidad y el acceso a los miembros de una clase (atributos y métodos).
+    - default (sin modificador): El miembro es accesible solo dentro del mismo paquete.
+    - public: El miembro es accesible desde cualquier clase.
+    - private: El miembro es accesible solo dentro de la clase donde se declara.
+    - protected: El miembro es accesible dentro del mismo paquete y por las subclases.
+
+
+Constructores: 
+    -Son métodos especiales que se utilizan para crear e inicializar objetos de una clase. El constructor tiene el mismo nombre que la clase y no tiene un tipo de retorno. 
+    -Se ejecuta automáticamente cuando se crea un objeto. Si no se crea un constructor explícitamente, Java proporciona un constructor por defecto sin parámetros.
+    -Se pueden crear varios contructores con diferentes parámetros (sobrecarga de constructores) para permitir diferentes formas de inicializar un objeto.
+
+Pilares de la POO
+    1. Encapsulamiento: Es el principio de ocultar los detalles internos de una clase y exponer solo lo necesario a través de métodos públicos. Esto ayuda a proteger los datos y a mantener la integridad del objeto.
+    2. Abstracción: Es el proceso de simplificar la complejidad al enfocarse en los aspectos esenciales de un objeto y ocultar los detalles innecesarios. Permite crear modelos más simples y fáciles de entender.
