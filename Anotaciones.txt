@@ -145,3 +145,34 @@ Constructores:
 Pilares de la POO
     1. Encapsulamiento: Es el principio de ocultar los detalles internos de una clase y exponer solo lo necesario a través de métodos públicos. Esto ayuda a proteger los datos y a mantener la integridad del objeto.
     2. Abstracción: Es el proceso de simplificar la complejidad al enfocarse en los aspectos esenciales de un objeto y ocultar los detalles innecesarios. Permite crear modelos más simples y fáciles de entender.
+
+
+    GIT  -> Linus Torvalds
+
+Github
+Gitlab
+Bitbucket
+
+Comandos Command Line Interface (CLI) GIT 
+git init  -> Inicializa un nuevo repositorio Git en el directorio actual.
+git add -> Agrega archivos al área de preparación (staging area) para ser confirmados (committed).
+git add . -> Agrega todos los archivos modificados y nuevos al área de preparación.
+git status -> Muestra el estado actual del repositorio, incluyendo los archivos modificados, los archivos en el área de preparación y los archivos sin seguimiento.
+git branch -> Muestra las ramas existentes en el repositorio y resalta la rama actual.
+git push -> Envía los cambios confirmados (committed) al repositorio remoto.
+git pull -> Trae los cambios del repositorio remoto y los fusiona con la rama local.
+
+
+git clone
+
+
+
+branches -> Ramas en Git permiten trabajar en diferentes versiones de un proyecto de manera simultánea. Cada rama puede contener cambios independientes, lo que facilita el desarrollo colaborativo y la gestión de características o correcciones sin afectar la rama principal (main o master).
+
+
+Graphic User Interface (GUI)
+En java existen los siguientes paquetes para crear interfaces gráficas:
+    AWT (Abstract Window Toolkit) -> java.awt.*
+    Swing -> javax.swing.*
+        javax.swing.JOptionPane -> para mostrar cuadros de diálogo
+    JavaFX -> javafx.*
