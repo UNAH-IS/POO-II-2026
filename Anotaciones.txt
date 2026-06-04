@@ -134,7 +134,7 @@ Modificadores de acceso: sirven para controlar la visibilidad y el acceso a los 
     - default (sin modificador): El miembro es accesible solo dentro del mismo paquete.
     - public: El miembro es accesible desde cualquier clase.
     - private: El miembro es accesible solo dentro de la clase donde se declara.
-    - protected: El miembro es accesible dentro del mismo paquete y por las subclases.
+    - protected: El miembro es accesible dentro de la misma clase, dentro del mismo paquete y por las subclases.
 
 
 Constructores: 
@@ -176,3 +176,113 @@ En java existen los siguientes paquetes para crear interfaces gráficas:
     Swing -> javax.swing.*
         javax.swing.JOptionPane -> para mostrar cuadros de diálogo
     JavaFX -> javafx.*
+
+
+Modificador Static:
+    -El modificador static se utiliza para indicar que un miembro (atributo o método) pertenece a la clase en lugar de a una instancia específica de la clase. 
+    -Los miembros estáticos son compartidos por todas las instancias de la clase, lo que significa que cualquier cambio realizado en un miembro estático afectará a todas las instancias que lo utilicen.
+    -Los miembros estáticos pueden ser accedidos sin necesidad de crear un objeto de la clase, utilizando el nombre de la clase seguido del operador punto (.) y el nombre del miembro estático.
+    
+
+SOLID
+    S: Single Responsibility Principle (Principio de Responsabilidad Única)
+    O: Open/Closed Principle (Principio de Abierto/Cerrado)
+    L: Liskov Substitution Principle (Principio de Sustitución de Liskov)
+    I: Interface Segregation Principle (Principio de Segregación de Interfaces)
+    D: Dependency Inversion Principle (Principio de Inversión de Dependencias)
+
+MVC 
+    -Modelo-Vista-Controlador (MVC) es un patrón de diseño de software que se utiliza para separar la lógica de negocio, la presentación y el control de una aplicación. 
+    -El modelo representa los datos y la lógica de negocio, la vista se encarga de la presentación y la interfaz de usuario, y el controlador maneja las interacciones del usuario y coordina la comunicación entre el modelo y la vista. 
+    -Este patrón ayuda a organizar el código, mejorar la mantenibilidad y facilitar el desarrollo colaborativo.
+
+
+Herencia de clases: 
+    Permite crear una nueva clase (subclase o clase hija, ejemplo: Alumno, Maestro) que hereda los atributos y métodos de una clase existente (superclase o clase padre, ejemplo: Persona). La subclase puede agregar nuevos atributos y métodos, o modificar los existentes, para especializar su comportamiento. La herencia promueve la reutilización de código y la creación de jerarquías de clases.
+    Automaticamente todas las clases en Java heredan de la clase Object, que es la superclase raíz de todas las clases en Java. Esto significa que todas las clases tienen acceso a los métodos definidos en la clase Object, como toString(), equals(), hashCode(), etc.
+    Solo se permite herencia simple en Java, es decir, una clase solo puede extender de una única clase padre.
+
+    Estructura de clases con herencia:
+
+    Persona:
+        nombre
+        apellido
+        edad
+        carrera
+        identidad
+        genero
+    
+    Alumno:
+        cuenta
+        promedio
+        clasesAprobadas
+
+    Maestro:
+        sueldo
+        clasesImpartidas
+        horasTrabajadas
+        categoriaDocente
+
+    Para aplicar la herencia en Java, se utiliza la palabra clave "extends". Por ejemplo:
+
+    public class Alumno extends Persona {
+        private String cuenta;
+        private double promedio;
+        private int clasesAprobadas;
+
+        // Constructor, getters, setters y métodos específicos de Alumno
+    }
+
+Sobreescritura de métodos:
+    Permite a una subclase proporcionar una implementación específica de un método que ya está definido en su superclase. Para sobreescribir un método, la subclase debe definir un método con el mismo nombre, tipo de retorno y parámetros que el método de la superclase. La sobreescritura se utiliza para modificar o extender el comportamiento de un método heredado.
+
+    Ejemplo de sobreescritura de métodos:
+
+    public class Persona {
+        public void hablar() {
+            System.out.println("La persona está hablando.");
+        }
+    }
+
+    public class Alumno extends Persona {
+        @Override
+        public void hablar() {
+            System.out.println("El alumno está hablando.");
+        }
+    }
+
+Polimorfismo:
+    Es la capacidad de un objeto de una clase hija (subclase) para ser tratado como un objeto de su clase padre (superclase). 
+    Esto permite que el mismo código pueda funcionar con objetos de diferentes clases, siempre y cuando compartan una relación de herencia. El polimorfismo se logra a través de la sobreescritura de métodos y el uso de referencias de tipo superclase para referirse a objetos de tipo subclase.
+
+    Ejemplo de polimorfismo:
+
+    public class Persona {
+        public void hablar() {
+            System.out.println("La persona está hablando.");
+        }
+    }
+
+    public class Alumno extends Persona {
+        @Override
+        public void hablar() {
+            System.out.println("El alumno está hablando.");
+        }
+    }
+
+    public class Maestro extends Persona {
+        @Override
+        public void hablar() {
+            System.out.println("El maestro está hablando.");
+        }
+    }
+
+    // En algún lugar del código
+    Persona persona1 = new Alumno();
+    Persona persona2 = new Maestro();
+
+    persona1.hablar(); // Imprime: "El alumno está hablando."
+    persona2.hablar(); // Imprime: "El maestro está hablando."
+
+
+    Poli: (muchos) + morfismo (formas) -> muchas formas

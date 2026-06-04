@@ -1,14 +1,16 @@
 import clases.Alumno;
 import clases.Carrera;
 import clases.Maestro;
+import clases.Persona;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
 public class App {
-    ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-    ArrayList<Maestro> maestros = new ArrayList<Maestro>();
     public static ArrayList<Carrera> carreras = new ArrayList<Carrera>();
+
+    ArrayList<Persona> personas = new ArrayList<Persona>();
 
     public App() {
         //Ejemplo del modificar static en el atributo contadorAlumnos
@@ -49,7 +51,7 @@ public class App {
 
             switch (opcion) {
                 case 1:
-                    agregarAlumno();
+                    agregarPersona(new Alumno());
                     break;
                 case 2:
                     mostrarAlumnos();
@@ -67,7 +69,7 @@ public class App {
                     eliminarCarrera();
                     break;
                 case 7:
-                    agregarMaestro();
+                    agregarPersona(new Maestro());
                     break;
                 case 8: 
                     mostrarMaestros();
@@ -83,16 +85,37 @@ public class App {
         } while (true);
     }
 
-    public void agregarAlumno() {
-        Alumno alumno = new Alumno(); 
-        alumno.solicitarInformacion(this.carreras);
-        alumnos.add(alumno);
+    // public void agregarPersona(String tipoPersona) {
+    //     Persona persona = tipoPersona == "Alumno" ? new Alumno() : new Maestro(); 
+    //     persona.solicitarInformacion(this.carreras);
+    //     personas.add(persona);
+    // }
+
+    public void agregarPersona(Persona persona) {
+        persona.solicitarInformacion(this.carreras);
+        personas.add(persona);
+    }
+
+    //Este metodo solo es una prueba para mostrar el operador ternario, no se utiliza en el programa
+    public void prueba(String tipoPersona) {
+        // String mensaje = "";
+        // if (tipoPersona == "Alumno") {
+        //     mensaje = "Agregando un alumno...";
+        // } else {
+        //     mensaje = "Agregando maestro...";
+        // }
+
+        String mensaje = tipoPersona == "Alumno" ? "Agregando un alumno..." : "Agregando maestro...";
+
+        //Operador ternario -> condicion ? valorSiVerdadero : valorSiFalso
     }
 
     public String obtenerListaAlumnos() {
         String listaAlumnos = "Lista de alumnos:\n";
-        for (int i = 0; i < alumnos.size(); i++) {
-            listaAlumnos += i + "- " + alumnos.get(i).toString() + "\n";
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i) instanceof Alumno) {
+                listaAlumnos += i + "- " + personas.get(i).toString() + "\n";
+            }
         }
 
         return listaAlumnos;
@@ -104,7 +127,7 @@ public class App {
 
     public void eliminarAlumno() {
         int alumnoSeleccionado = Integer.parseInt(JOptionPane.showInputDialog(obtenerListaAlumnos() + "Seleccione el número del alumno a eliminar:"));
-        alumnos.remove(alumnoSeleccionado);
+        personas.remove(alumnoSeleccionado);
     }
 
     public void agregarCarrera() {
@@ -131,16 +154,12 @@ public class App {
         carreras.remove(carreraSeleccionada);
     }
 
-    public void agregarMaestro() {
-        Maestro maestro = new Maestro(); 
-        maestro.solicitarInformacion(this.carreras);
-        maestros.add(maestro);
-    }
-
     public String obtenerListaMaestros() {
         String listaMaestros = "Lista de maestros:\n";
-        for (int i = 0; i < maestros.size(); i++) {
-            listaMaestros += i + "- " + maestros.get(i).toString() + "\n";
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i) instanceof Maestro) {
+                listaMaestros += i + "- " + personas.get(i).toString() + "\n";
+            }
         }
 
         return listaMaestros;
