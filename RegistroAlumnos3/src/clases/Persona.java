@@ -1,9 +1,10 @@
 package clases;
 
+import interfaces.Administrable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class Persona extends Object {
+public abstract class Persona implements Administrable {
     protected String nombre; //este sería this.nombre
     protected String apellido;
     protected int edad;
@@ -108,4 +109,6 @@ public class Persona extends Object {
                "Identidad: " + this.identidad + ",\t" +
                "Genero: " + this.genero;
     }
+
+    public abstract void guardarInformacionEnArchivo(String nombreArchivo);
 }

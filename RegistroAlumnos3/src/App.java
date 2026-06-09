@@ -21,6 +21,13 @@ public class App {
         Alumno alumno3 = new Alumno("Juan", "Perez", 21, new Carrera(30, "IE", "Ingenieria en Electronica"), "0801-2000-67890", "Masculino", "202610033333", 75.0f, 15);
         Alumno.contadorAlumnos = 100;
 
+
+        //Ejemplo de polimorfismo, se pueden crear objetos de tipo Alumno y Maestro pero se pueden manejar como objetos de tipo Persona
+        Persona p = new Alumno();
+        Persona p2 = new Maestro();
+
+        //Persona p3 = new Persona(); //No se puede crear un objeto de una clase abstracta, pero si se pueden crear objetos de las clases que heredan de la clase abstracta y manejarlos como objetos de la clase abstracta
+
         System.out.println("Contador de alumnos desde alumno1: " + Alumno.contadorAlumnos);
         System.out.println("Contador de alumnos desde alumno2: " + Alumno.contadorAlumnos);
         System.out.println("Contador de alumnos desde alumno3: " + Alumno.contadorAlumnos);

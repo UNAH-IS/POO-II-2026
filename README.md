@@ -12,13 +12,21 @@
 6. [Estándares de codificación](#6-estándares-de-codificación)
 7. [Clases y Objetos](#7-clases-y-objetos)
 8. [Modificadores de acceso](#8-modificadores-de-acceso)
-9. [Constructores](#9-constructores)
-10. [Encapsulamiento — Getters y Setters](#10-encapsulamiento--getters-y-setters)
-11. [Los 4 Pilares de la POO](#11-los-4-pilares-de-la-poo)
-12. [Colecciones — ArrayList](#12-colecciones--arraylist)
-13. [Interfaces gráficas en Java](#13-interfaces-gráficas-en-java)
-14. [Control de versiones con Git](#14-control-de-versiones-con-git)
-15. [Ejercicios del curso](#15-ejercicios-del-curso)
+9. [El modificador `static`](#9-el-modificador-static)
+10. [Constructores](#10-constructores)
+11. [Encapsulamiento — Getters y Setters](#11-encapsulamiento--getters-y-setters)
+12. [Los 4 Pilares de la POO](#12-los-4-pilares-de-la-poo)
+13. [Herencia](#13-herencia)
+14. [Sobreescritura de métodos](#14-sobreescritura-de-métodos)
+15. [Polimorfismo](#15-polimorfismo)
+16. [Clases abstractas](#16-clases-abstractas)
+17. [Interfaces](#17-interfaces)
+18. [Colecciones — ArrayList](#18-colecciones--arraylist)
+19. [Interfaces gráficas en Java](#19-interfaces-gráficas-en-java)
+20. [Principios SOLID](#20-principios-solid)
+21. [Patrón MVC](#21-patrón-mvc)
+22. [Control de versiones con Git](#22-control-de-versiones-con-git)
+23. [Ejercicios del curso](#23-ejercicios-del-curso)
 
 ---
 
@@ -113,19 +121,19 @@ Una **variable** es un espacio en memoria con un nombre para almacenar un valor.
 ### 4.1 Tipos primitivos
 
 ```java
-int    numero    = 10;       // Entero
-double decimal   = 3.14;     // Decimal de doble precisión
-float  flotante  = 1.5f;     // Decimal de precisión simple
-byte   byteVal   = 100;      // Entero pequeño (-128 a 127)
-boolean esVerdad = true;     // Verdadero o falso
-char   caracter  = 'A';      // Un solo carácter
+int     numero   = 10;    // Entero
+double  decimal  = 3.14;  // Decimal de doble precisión
+float   flotante = 1.5f;  // Decimal de precisión simple
+byte    byteVal  = 100;   // Entero pequeño (-128 a 127)
+boolean esVerdad = true;  // Verdadero o falso
+char    caracter = 'A'; // Un solo carácter
 ```
 
 ### 4.2 Tipos no primitivos (Clases)
 
 ```java
-String texto = "Hola, mundo!"; // Cadena de texto
-int[]  arreglo = {1, 2, 3};    // Arreglo de enteros
+String texto   = "Hola, mundo!"; // Cadena de texto
+int[]  arreglo = {1, 2, 3};      // Arreglo de enteros
 ```
 
 ### 4.3 Constantes
@@ -133,8 +141,8 @@ int[]  arreglo = {1, 2, 3};    // Arreglo de enteros
 Las constantes usan la palabra clave `final` y su valor **no puede cambiar** una vez asignado:
 
 ```java
-final double PI = 3.14159;
-final int MAX_INTENTOS = 3;
+final double PI           = 3.14159;
+final int    MAX_INTENTOS = 3;
 ```
 
 > **Convención:** las constantes se escriben en **MAYÚSCULAS_CON_GUIÓN_BAJO** (SNAKE_CASE).
@@ -183,7 +191,7 @@ Seguir convenciones hace el código más legible y mantenible:
 | **Métodos** | lowerCamelCase | `calcularPromedio()`, `getNombre()` |
 | **Variables** | lowerCamelCase | `edadEstudiante`, `totalRegistros` |
 | **Constantes** | UPPER_SNAKE_CASE | `MAX_ALUMNOS`, `TASA_IVA` |
-| **Paquetes** | todo minúsculas | `principal`, `clases`, `modelos` |
+| **Paquetes** | todo minúsculas | `principal`, `clases`, `interfaces` |
 
 ---
 
@@ -198,22 +206,15 @@ Una **clase** es una **plantilla o molde** que define las características (atri
 Un **objeto** es una **instancia concreta** de una clase. Se crea usando la palabra clave `new`.
 
 ```java
-// Definición de la clase
 public class Computadora {
-    // Atributos (características)
     String marca;
     String modelo;
     String procesador;
-    int memoriaRAM;
-    int almacenamiento;
+    int    memoriaRAM;
+    int    almacenamiento;
 
-    // Métodos (comportamientos)
     public void encender() {
         System.out.println("La computadora se ha encendido.");
-    }
-
-    public void apagar() {
-        System.out.println("La computadora se ha apagado.");
     }
 
     public void ejecutarPrograma(String programa) {
@@ -223,38 +224,21 @@ public class Computadora {
 ```
 
 ```java
-// Crear un objeto (instancia) de la clase
+// Crear un objeto (instanciar) la clase
 Computadora miPC = new Computadora();
-miPC.marca = "Dell";
+miPC.marca     = "Dell";
 miPC.memoriaRAM = 16;
 miPC.encender();
 ```
 
-### Más ejemplos de clases del mundo real
+**Otras clases del mundo real:**
 
-**Clase `Persona`:**
-```java
-public class Persona {
-    String nombre;
-    int edad;
-    String genero;
-    double altura;
-    double peso;
-
-    public void hablar(String mensaje) {
-        System.out.println(nombre + " dice: " + mensaje);
-    }
-
-    public void comer(String comida) {
-        System.out.println(nombre + " está comiendo " + comida + ".");
-    }
-}
-```
-
-**Otras clases sugeridas para modelar:**
-- `Carro` → atributos: marca, modelo, año, color, velocidad | métodos: `acelerar()`, `frenar()`, `encender()`
-- `Animal` → atributos: especie, edad, color, peso | métodos: `comer()`, `moverse()`, `emitirSonido()`
-- `Libro` → atributos: título, autor, año, páginas | métodos: `abrirPagina()`, `cerrar()`
+| Clase | Atributos | Métodos |
+|---|---|---|
+| `Carro` | marca, modelo, año, color | `acelerar()`, `frenar()`, `encender()` |
+| `Animal` | especie, edad, color, peso | `comer()`, `moverse()`, `emitirSonido()` |
+| `Libro` | título, autor, año, páginas | `abrirPagina()`, `cerrar()` |
+| `Persona` | nombre, edad, género, altura | `hablar()`, `caminar()`, `comer()` |
 
 > **Clave:** Una clase es un tipo de dato. Así como `int` almacena números, `Alumno` almacena información de un alumno.
 
@@ -264,25 +248,55 @@ public class Persona {
 
 Controlan quién puede ver o usar los atributos y métodos de una clase:
 
-| Modificador | Acceso desde |
-|---|---|
-| `public` | Cualquier clase, en cualquier paquete |
-| `private` | Solo dentro de la misma clase |
-| `protected` | Mismo paquete y subclases |
-| *(sin modificador)* | Solo dentro del mismo paquete |
+| Modificador | Misma clase | Mismo paquete | Subclases | Cualquier clase |
+|---|:---:|:---:|:---:|:---:|
+| `public` | ✅ | ✅ | ✅ | ✅ |
+| `protected` | ✅ | ✅ | ✅ | ❌ |
+| *(sin modificador)* | ✅ | ✅ | ❌ | ❌ |
+| `private` | ✅ | ❌ | ❌ | ❌ |
 
 ```java
 public class Ejemplo {
     public    String nombre;    // accesible desde cualquier lado
-    private   int    saldo;     // solo accesible dentro de esta clase
-    protected String categoria; // accesible en el paquete y subclases
-              double peso;      // accesible solo en el paquete
+    protected int    edad;      // accesible en el paquete y subclases
+    private   double saldo;     // solo dentro de esta clase
+              String ciudad;    // solo dentro del mismo paquete
 }
 ```
 
 ---
 
-## 9. Constructores
+## 9. El modificador `static`
+
+El modificador `static` indica que un miembro (atributo o método) **pertenece a la clase** en lugar de a una instancia específica.
+
+- Los miembros estáticos son **compartidos** por todas las instancias de la clase.
+- Se pueden acceder **sin crear un objeto**, usando directamente el nombre de la clase.
+- Cualquier cambio en un atributo estático afecta a todas las instancias.
+
+```java
+public class Alumno {
+    public static int contadorAlumnos = 0; // compartido entre todos los objetos
+
+    public Alumno() {
+        contadorAlumnos++; // cada vez que se crea un alumno, el contador sube
+    }
+}
+
+// Acceso sin crear objeto:
+System.out.println(Alumno.contadorAlumnos);
+
+// Tanto alumno1 como alumno2 comparten el mismo contadorAlumnos
+Alumno alumno1 = new Alumno(); // contadorAlumnos = 1
+Alumno alumno2 = new Alumno(); // contadorAlumnos = 2
+System.out.println(Alumno.contadorAlumnos); // 2
+```
+
+> El método `main` también es `static` porque Java necesita ejecutarlo **sin crear un objeto** de la clase principal.
+
+---
+
+## 10. Constructores
 
 Un **constructor** es un método especial que se ejecuta automáticamente al crear un objeto con `new`. Sirve para inicializar los atributos del objeto.
 
@@ -293,72 +307,61 @@ Un **constructor** es un método especial que se ejecuta automáticamente al cre
 
 ```java
 public class Alumno {
-
     private String nombre;
-    private int edad;
+    private int    edad;
 
-    // Constructor sin parámetros (por defecto)
+    // Constructor sin parámetros
     public Alumno() {
         System.out.println("Se creó un nuevo Alumno.");
     }
 
     // Constructor con parámetros
     public Alumno(String nombre, int edad) {
-        this.nombre = nombre; // "this" hace referencia al atributo del objeto
-        this.edad = edad;
+        this.nombre = nombre; // "this" = el atributo del objeto
+        this.edad   = edad;
     }
 }
 
 // Uso:
-Alumno a1 = new Alumno();                  // llama al constructor vacío
-Alumno a2 = new Alumno("María", 20);       // llama al constructor con parámetros
+Alumno a1 = new Alumno();             // constructor vacío
+Alumno a2 = new Alumno("María", 20);  // constructor con parámetros
 ```
 
-> La palabra clave **`this`** se usa para distinguir el atributo del objeto del parámetro del constructor cuando tienen el mismo nombre.
+> **`this`** distingue el atributo del objeto del parámetro del constructor cuando tienen el mismo nombre.
 
-### Sobrecarga de constructores
+### Llamar al constructor padre con `super()`
 
-Se pueden tener **varios constructores** con diferentes parámetros:
+Cuando una clase hereda de otra, puede llamar al constructor del padre con `super()`:
 
 ```java
-public class Carro {
-    String marca;
-    String color;
-    int año;
+public class Alumno extends Persona {
+    private String cuenta;
 
-    public Carro() { }
-
-    public Carro(String marca) {
-        this.marca = marca;
-    }
-
-    public Carro(String marca, String color, int año) {
-        this.marca = marca;
-        this.color = color;
-        this.año   = año;
+    public Alumno(String nombre, String apellido, int edad, String cuenta) {
+        super(nombre, apellido, edad); // llama al constructor de Persona
+        this.cuenta = cuenta;
     }
 }
 ```
 
 ---
 
-## 10. Encapsulamiento — Getters y Setters
+## 11. Encapsulamiento — Getters y Setters
 
-El **encapsulamiento** consiste en declarar los atributos como `private` y exponer su acceso controlado mediante métodos públicos llamados **getters** (para leer) y **setters** (para escribir).
+El **encapsulamiento** consiste en declarar los atributos como `private` y exponer su acceso controlado mediante métodos públicos:
+- **Getter** (`get...`): devuelve el valor de un atributo
+- **Setter** (`set...`): establece el valor de un atributo
 
 ```java
 public class Alumno {
     private String nombre;
-    private String apellido;
     private int    edad;
 
-    // Getter — obtener el valor
-    public String getNombre() {
+    public String getNombre() {      // getter
         return this.nombre;
     }
 
-    // Setter — establecer el valor
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre) { // setter
         this.nombre = nombre;
     }
 
@@ -367,14 +370,13 @@ public class Alumno {
     }
 
     public void setEdad(int edad) {
-        if (edad > 0) { // validación antes de asignar
+        if (edad > 0) {              // validación antes de asignar
             this.edad = edad;
         }
     }
 }
 ```
 
-**Uso en el programa principal:**
 ```java
 Alumno a = new Alumno();
 a.setNombre("Carlos");
@@ -382,40 +384,335 @@ a.setEdad(21);
 System.out.println(a.getNombre()); // Carlos
 ```
 
-> **¿Por qué encapsular?** Protege los datos y permite agregar validaciones (como en `setEdad`) sin que el resto del programa tenga que cambiar.
+> **¿Por qué encapsular?** Protege los datos y permite agregar validaciones sin que el resto del programa deba cambiar.
 
 ---
 
-## 11. Los 4 Pilares de la POO
+## 12. Los 4 Pilares de la POO
 
 | Pilar | Descripción |
 |---|---|
-| **Encapsulamiento** | Ocultar los detalles internos y exponer solo lo necesario mediante métodos públicos |
-| **Abstracción** | Modelar solo los aspectos relevantes de una entidad, ignorando detalles innecesarios |
-| **Herencia** | Una clase puede heredar atributos y métodos de otra clase (relación "es un") |
-| **Polimorfismo** | Un objeto puede tomar muchas formas; métodos con el mismo nombre pueden comportarse distinto |
+| **Encapsulamiento** | Ocultar detalles internos; acceso solo a través de métodos públicos |
+| **Abstracción** | Modelar solo los aspectos relevantes, ignorando detalles innecesarios |
+| **Herencia** | Una clase hija reutiliza atributos y métodos de una clase padre |
+| **Polimorfismo** | Un objeto puede tomar distintas formas según el contexto |
 
-### Ejemplo de Herencia (concepto)
+---
+
+## 13. Herencia
+
+La **herencia** permite crear una nueva clase (**subclase** o clase hija) que reutiliza los atributos y métodos de una clase existente (**superclase** o clase padre). La subclase puede agregar nuevos miembros o modificar los heredados.
+
+**Palabras clave:**
+- `extends` → para heredar de una clase
+- `super` → para acceder al constructor o métodos de la clase padre
+- `instanceof` → para verificar si un objeto es instancia de una clase
+
 ```java
-// Clase padre (superclase)
-public class Animal {
-    public void emitirSonido() {
-        System.out.println("...");
+// Clase padre
+public class Persona {
+    protected String nombre;
+    protected int    edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad   = edad;
     }
 }
 
-// Clase hija (subclase) — hereda de Animal
-public class Perro extends Animal {
+// Clase hija — hereda nombre y edad de Persona
+public class Alumno extends Persona {
+    private String cuenta;
+    private double promedio;
+
+    public Alumno(String nombre, int edad, String cuenta, double promedio) {
+        super(nombre, edad);      // llama al constructor de Persona
+        this.cuenta   = cuenta;
+        this.promedio = promedio;
+    }
+}
+
+public class Maestro extends Persona {
+    private double sueldo;
+
+    public Maestro(String nombre, int edad, double sueldo) {
+        super(nombre, edad);
+        this.sueldo = sueldo;
+    }
+}
+```
+
+> **Regla importante:** Java solo permite **herencia simple** — una clase solo puede `extends` de una única clase padre. Sin embargo, puede implementar múltiples interfaces.
+
+> **Dato:** Todas las clases en Java heredan implícitamente de `Object`, la superclase raíz, que provee métodos como `toString()`, `equals()` y `hashCode()`.
+
+### Diagrama de herencia — Proyecto RegistroAlumnos3
+
+El proyecto [RegistroAlumnos3](RegistroAlumnos3/src/) demuestra herencia, clases abstractas e interfaces con 4 clases:
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Administrable {
+        <<interface>>
+        +guardarInformacionEnArchivo(String nombreArchivo) void
+        +cargarInformacionDesdeArchivo(String nombreArchivo) void
+        +actualizarInformacionEnArchivo(String nombreArchivo) void
+        +eliminarInformacionEnArchivo(String nombreArchivo) void
+    }
+
+    class Persona {
+        <<abstract>>
+        #String nombre
+        #String apellido
+        #int edad
+        #Carrera carrera
+        #String identidad
+        #String genero
+        +getNombre() String
+        +setNombre(String) void
+        +getApellido() String
+        +getEdad() int
+        +solicitarInformacion(ArrayList~Carrera~) void
+        +toString() String
+        +guardarInformacionEnArchivo(String)* void
+    }
+
+    class Alumno {
+        -String cuenta
+        -float promedio
+        -int clasesAprobadas
+        +static int contadorAlumnos
+        +getCuenta() String
+        +getPromedio() float
+        +getClasesAprobadas() int
+        +solicitarInformacion(ArrayList~Carrera~) void
+        +guardarInformacionEnArchivo(String) void
+        +toString() String
+    }
+
+    class Maestro {
+        -double sueldo
+        -int clasesImpartidas
+        -int horasTrabajadas
+        -String categoriaDocente
+        +getSueldo() double
+        +getClasesImpartidas() int
+        +getHorasTrabajadas() int
+        +getCategoriaDocente() String
+        +solicitarInformacion(ArrayList~Carrera~) void
+        +guardarInformacionEnArchivo(String) void
+        +toString() String
+    }
+
+    class Carrera {
+        -String codigoCarrera
+        -String nombreCarrera
+        -int cantidadClases
+        +getCodigoCarrera() String
+        +getNombreCarrera() String
+        +getCantidadClases() int
+        +solicitarInformacion() void
+        +toString() String
+    }
+
+    Persona ..|> Administrable : implements
+    Alumno --|> Persona : extends
+    Maestro --|> Persona : extends
+    Persona --> Carrera : tiene
+```
+
+**Leyenda del diagrama:**
+- `+` → `public` &nbsp; `-` → `private` &nbsp; `#` → `protected`
+- `*` al final de un método → método **abstracto**
+- `--|>` → herencia (`extends`)
+- `..|>` → implementación (`implements`)
+- `-->` → asociación (tiene una referencia)
+
+---
+
+## 14. Sobreescritura de métodos
+
+La **sobreescritura** (`@Override`) permite que una subclase redefina un método heredado de su superclase, dándole su propia implementación.
+
+**Requisitos:**
+- Mismo nombre de método
+- Mismo tipo de retorno
+- Mismos parámetros
+
+```java
+public class Persona {
+    public void hablar() {
+        System.out.println("La persona está hablando.");
+    }
+
     @Override
-    public void emitirSonido() {
-        System.out.println("¡Guau!");
+    public String toString() {
+        return "Nombre: " + nombre + ", Edad: " + edad;
+    }
+}
+
+public class Alumno extends Persona {
+    @Override
+    public void hablar() {
+        System.out.println("El alumno está hablando.");
+    }
+
+    @Override
+    public String toString() {
+        return "Cuenta: " + cuenta + ", " + super.toString();
+    }
+}
+```
+
+> La anotación `@Override` es opcional pero **recomendada**: hace explícita la intención y el compilador verifica que realmente se está sobreescribiendo un método existente.
+
+> `super.toString()` llama a la implementación del método en la clase padre, evitando repetir código.
+
+---
+
+## 15. Polimorfismo
+
+El **polimorfismo** (del griego *poli* = muchos, *morfismo* = formas) es la capacidad de un objeto de una clase hija de ser tratado como si fuera de la clase padre.
+
+Esto permite que el **mismo código** opere sobre objetos de diferentes clases, invocando el comportamiento correcto según el tipo real del objeto.
+
+```java
+// Los tres son tratados como Persona, pero cada uno se comporta diferente
+Persona p1 = new Alumno();   // referencia Persona → objeto Alumno
+Persona p2 = new Maestro();  // referencia Persona → objeto Maestro
+
+p1.hablar(); // "El alumno está hablando."
+p2.hablar(); // "El maestro está hablando."
+
+// No se puede instanciar Persona si es abstracta:
+// Persona p3 = new Persona(); // ERROR
+```
+
+**Uso práctico — lista polimórfica:**
+```java
+ArrayList<Persona> personas = new ArrayList<>();
+personas.add(new Alumno());
+personas.add(new Maestro());
+personas.add(new Alumno());
+
+for (Persona p : personas) {
+    p.guardarInformacionEnArchivo("datos.txt"); // cada uno guarda a su manera
+}
+
+// Verificar tipo real con instanceof
+for (Persona p : personas) {
+    if (p instanceof Alumno) {
+        System.out.println("Es un alumno");
+    } else if (p instanceof Maestro) {
+        System.out.println("Es un maestro");
     }
 }
 ```
 
 ---
 
-## 12. Colecciones — ArrayList
+## 16. Clases abstractas
+
+Una **clase abstracta** no puede instanciarse directamente (no se puede hacer `new ClaseAbstracta()`). Sirve como base para otras clases, definiendo una estructura común.
+
+**Características:**
+- Se declara con la palabra clave `abstract`
+- Puede contener métodos **abstractos** (sin cuerpo) que las subclases **deben** implementar obligatoriamente
+- Puede contener métodos **concretos** (con implementación) que las subclases heredan directamente
+- Puede tener constructores (llamados con `super()` desde las subclases)
+- Si una clase tiene al menos un método abstracto, **debe** declararse abstracta
+
+```java
+public abstract class Persona {
+    protected String nombre;
+    protected String apellido;
+
+    // Constructor — solo llamable desde subclases con super()
+    public Persona(String nombre, String apellido) {
+        this.nombre   = nombre;
+        this.apellido = apellido;
+    }
+
+    // Método concreto — heredado tal cual
+    public void mostrarNombreCompleto() {
+        System.out.println(this.nombre + " " + this.apellido);
+    }
+
+    // Método abstracto — cada subclase DEBE implementarlo
+    public abstract void guardarInformacionEnArchivo(String nombreArchivo);
+}
+```
+
+```java
+// Subclase concreta — implementa el método abstracto
+public class Alumno extends Persona {
+    @Override
+    public void guardarInformacionEnArchivo(String nombreArchivo) {
+        System.out.println("Guardando alumno en: " + nombreArchivo);
+    }
+}
+
+// Persona p = new Persona(); // ERROR — no se puede instanciar
+Persona p = new Alumno();     // OK — polimorfismo
+```
+
+---
+
+## 17. Interfaces
+
+Una **interfaz** es un contrato que define un conjunto de métodos que una clase **debe** implementar. Es similar a una clase abstracta pero más restrictiva y flexible.
+
+**Diferencias clave con clases abstractas:**
+
+| Característica | Clase abstracta | Interfaz |
+|---|---|---|
+| Instanciación | No | No |
+| Métodos con cuerpo | Sí | Solo `default` y `static` (Java 8+) |
+| Atributos | Sí (cualquier tipo) | Solo `public static final` (constantes) |
+| Herencia múltiple | No (`extends` 1 sola) | Sí (`implements` varias) |
+| Constructores | Sí | No |
+
+```java
+public interface Administrable {
+    // Constante (implícitamente public static final)
+    String NOMBRE_ARCHIVO_DEFAULT = "datos.txt";
+
+    // Métodos abstractos (implícitamente public abstract)
+    void guardarInformacionEnArchivo(String nombreArchivo);
+    void cargarInformacionDesdeArchivo(String nombreArchivo);
+    void actualizarInformacionEnArchivo(String nombreArchivo);
+    void eliminarInformacionEnArchivo(String nombreArchivo);
+}
+```
+
+**Implementar una interfaz:**
+```java
+// Una clase puede implementar MÚLTIPLES interfaces
+public abstract class Persona implements Administrable {
+    // Debe implementar todos los métodos de la interfaz
+    // (o declararlos abstractos para que las subclases los implementen)
+}
+
+public class Alumno extends Persona implements Administrable, Serializable {
+    @Override
+    public void guardarInformacionEnArchivo(String nombreArchivo) {
+        System.out.println("Guardando alumno en: " + nombreArchivo);
+    }
+    // ... implementar los demás métodos
+}
+```
+
+**Usos comunes de las interfaces:**
+- Definir un contrato que múltiples clases no relacionadas deben cumplir
+- Simular herencia múltiple
+- Implementar listeners o manejadores de eventos (GUI)
+- Patrones de diseño (Estrategia, Observador, etc.)
+
+---
+
+## 18. Colecciones — ArrayList
 
 Un `ArrayList` es una lista **dinámica** (puede crecer o reducirse) que almacena objetos de un tipo específico.
 
@@ -426,10 +723,11 @@ import java.util.ArrayList;
 ArrayList<Alumno> alumnos = new ArrayList<>();
 
 // Agregar elementos
-Alumno a1 = new Alumno("Ana", "López", 19, "Ingeniería", "0801200001234", "Femenino");
+Alumno a1 = new Alumno();
+a1.solicitarInformacion(carreras);
 alumnos.add(a1);
 
-// Acceder a un elemento
+// Acceder a un elemento por índice
 Alumno primero = alumnos.get(0);
 
 // Recorrer la lista
@@ -439,29 +737,40 @@ for (Alumno a : alumnos) {
 
 // Tamaño de la lista
 System.out.println("Total: " + alumnos.size());
+
+// Eliminar un elemento
+alumnos.remove(0);
 ```
 
-> `<>` es el **operador diamante** y define el tipo de dato que contendrá la lista (también llamado *generics*).
+> `<>` es el **operador diamante** (*generics*): define el tipo de objeto que almacenará la lista.
 
 **Comparación con arreglos estáticos:**
 ```java
-// Arreglo estático — tamaño fijo
+// Arreglo — tamaño fijo, definido al crear
 Alumno[] arreglo = new Alumno[5];
 
-// ArrayList — tamaño dinámico
+// ArrayList — tamaño dinámico, crece según se necesite
 ArrayList<Alumno> lista = new ArrayList<>();
+```
+
+**Lista polimórfica (almacena padres e hijos):**
+```java
+// Al declarar ArrayList<Persona>, se pueden agregar Alumno y Maestro
+ArrayList<Persona> personas = new ArrayList<>();
+personas.add(new Alumno());
+personas.add(new Maestro());
 ```
 
 ---
 
-## 13. Interfaces gráficas en Java
+## 19. Interfaces gráficas en Java
 
 Java ofrece varios paquetes para crear ventanas y formularios:
 
 | Paquete | Descripción |
 |---|---|
 | `java.awt.*` | AWT — Abstract Window Toolkit (básico, nativo del SO) |
-| `javax.swing.*` | Swing — más completo, componentes propios |
+| `javax.swing.*` | Swing — más completo, componentes propios de Java |
 | `javafx.*` | JavaFX — moderno, soporta CSS y FXML |
 
 ### JOptionPane — Diálogos rápidos con Swing
@@ -477,11 +786,78 @@ String nombre = JOptionPane.showInputDialog("¿Cuál es tu nombre?");
 
 // Convertir String a int
 int edad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántos años tienes?"));
+
+// Convertir String a double
+double promedio = Double.parseDouble(JOptionPane.showInputDialog("¿Cuál es tu promedio?"));
+
+// Mostrar un objeto (llama a su método toString())
+Alumno a = new Alumno();
+JOptionPane.showMessageDialog(null, a);
 ```
 
 ---
 
-## 14. Control de versiones con Git
+## 20. Principios SOLID
+
+**SOLID** es un acrónimo de cinco principios de diseño orientado a objetos que ayudan a crear código más mantenible, flexible y escalable:
+
+| Letra | Principio | Descripción |
+|---|---|---|
+| **S** | *Single Responsibility* | Una clase debe tener **una sola responsabilidad** (razón para cambiar) |
+| **O** | *Open/Closed* | Las clases deben estar **abiertas para extensión** pero **cerradas para modificación** |
+| **L** | *Liskov Substitution* | Una subclase debe poder **sustituir** a su superclase sin romper el programa |
+| **I** | *Interface Segregation* | Es mejor tener **muchas interfaces específicas** que una interfaz grande y general |
+| **D** | *Dependency Inversion* | Depender de **abstracciones**, no de implementaciones concretas |
+
+**Ejemplo de S (Responsabilidad Única):**
+```java
+// MAL: una clase hace demasiado
+public class Alumno {
+    public void guardarEnBaseDeDatos() { ... }
+    public void enviarEmail() { ... }
+    public void generarReporte() { ... }
+}
+
+// BIEN: cada clase tiene una responsabilidad
+public class Alumno { /* solo datos del alumno */ }
+public class AlumnoRepository { public void guardar(Alumno a) { ... } }
+public class EmailService { public void enviar(String dest) { ... } }
+}
+```
+
+---
+
+## 21. Patrón MVC
+
+**Modelo-Vista-Controlador (MVC)** es un patrón de diseño que separa una aplicación en tres capas:
+
+```mermaid
+flowchart LR
+    U([Usuario]) -->|interactúa| V[Vista]
+    V -->|evento| C[Controlador]
+    C -->|actualiza| M[Modelo]
+    M -->|notifica| V
+
+    style M fill:#4a90d9,color:#fff
+    style V fill:#7ed321,color:#fff
+    style C fill:#f5a623,color:#fff
+```
+
+| Capa | Responsabilidad | Ejemplo en Java |
+|---|---|---|
+| **Modelo** | Datos y lógica de negocio | Clases `Alumno`, `Maestro`, `Carrera` |
+| **Vista** | Presentación e interfaz de usuario | `JOptionPane`, formularios Swing, JavaFX |
+| **Controlador** | Coordina Modelo y Vista, maneja eventos | Clase `App`, métodos del menú |
+
+**Ventajas:**
+- Separación clara de responsabilidades
+- Facilita el trabajo en equipo (un dev en Vista, otro en Modelo)
+- El Modelo puede probarse sin una interfaz gráfica
+- Cambiar la Vista no afecta al Modelo
+
+---
+
+## 22. Control de versiones con Git
 
 **Git** (creado por Linus Torvalds) es el sistema de control de versiones más utilizado en el mundo.
 
@@ -502,11 +878,11 @@ git init
 # Ver el estado actual
 git status
 
-# Agregar archivos al área de preparación
+# Agregar archivos al área de preparación (staging)
 git add NombreArchivo.java
 git add .                        # todos los archivos
 
-# Guardar los cambios (confirmar)
+# Guardar los cambios (commit)
 git commit -m "Descripción del cambio"
 
 # Ver las ramas existentes
@@ -527,53 +903,86 @@ git clone https://github.com/usuario/repositorio.git
 Las **ramas** permiten trabajar en diferentes versiones del proyecto de forma simultánea sin afectar la rama principal (`main`).
 
 ```bash
-git branch nueva-funcionalidad     # crear rama
-git checkout nueva-funcionalidad   # cambiarse a esa rama
-git merge nueva-funcionalidad      # fusionar con la rama actual
+git branch nueva-funcionalidad       # crear rama
+git checkout nueva-funcionalidad     # cambiarse a esa rama
+git merge nueva-funcionalidad        # fusionar con la rama actual
 ```
 
 ---
 
-## 15. Ejercicios del curso
+## 23. Ejercicios del curso
 
-| Proyecto | Archivo(s) | Concepto |
+| Proyecto | Archivos principales | Conceptos demostrados |
 |---|---|---|
 | **Hola Mundo (básico)** | [HolaMundo.java](HolaMundo.java) | Primer programa, `System.out.println` |
-| **Hola Mundo Eclipse** | [HolaMundo.java](HolaMundoEclipse/src/principal/HolaMundo.java) | Uso de Eclipse, `JOptionPane` |
+| **Hola Mundo Eclipse** | [HolaMundo.java](HolaMundoEclipse/src/principal/HolaMundo.java) | Eclipse, `JOptionPane` |
 | **Hola Mundo VS Code** | [App.java](HolaMundoVSCode/HolaMundo/src/principal/App.java) | Variables, tipos de datos, métodos |
-| **Registro de Alumnos** | [App.java](RegistroAlumnos/src/App.java) · [Alumno.java](RegistroAlumnos/src/clases/Alumno.java) | Clases, objetos, encapsulamiento, ArrayList, JOptionPane |
+| **Registro de Alumnos** | [Alumno.java](RegistroAlumnos/src/clases/Alumno.java) | Clases, objetos, encapsulamiento, ArrayList |
+| **Registro de Alumnos 3** | [Persona.java](RegistroAlumnos3/src/clases/Persona.java) · [Alumno.java](RegistroAlumnos3/src/clases/Alumno.java) · [Maestro.java](RegistroAlumnos3/src/clases/Maestro.java) · [Administrable.java](RegistroAlumnos3/src/interfaces/Administrable.java) | Herencia, clases abstractas, interfaces, polimorfismo, `static`, `@Override` |
 
-### Descripción de ejercicios
+### Evolución del proyecto RegistroAlumnos
 
-#### Hola Mundo
-El programa más simple en Java. Punto de entrada de todo programa: el método `main`.
+```mermaid
+flowchart LR
+    A[RegistroAlumnos
+Clase Alumno simple
+Getters y Setters] -->|agrega herencia| B[RegistroAlumnos3
+Persona abstracta
+Alumno + Maestro
+Interfaz Administrable]
+```
+
+### RegistroAlumnos3 — Puntos clave del código
+
+**Clase abstracta `Persona` implementa la interfaz `Administrable`:**
 ```java
-public class HolaMundo {
-    public static void main(String[] args) {
-        System.out.println("Hola Mundo");
+public abstract class Persona implements Administrable {
+    protected String nombre;   // protected: accesible en subclases
+    protected Carrera carrera; // asociación con la clase Carrera
+
+    public abstract void guardarInformacionEnArchivo(String nombreArchivo);
+}
+```
+
+**`Alumno` extiende `Persona` y usa `super()` + `@Override`:**
+```java
+public class Alumno extends Persona {
+    public static int contadorAlumnos = 0; // compartido entre todos los alumnos
+
+    public Alumno(String nombre, String apellido, int edad,
+                  Carrera carrera, String identidad, String genero,
+                  String cuenta, float promedio, int clasesAprobadas) {
+        super(nombre, apellido, edad, carrera, identidad, genero);
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void solicitarInformacion(ArrayList<Carrera> carreras) {
+        this.cuenta = JOptionPane.showInputDialog("Número de cuenta:");
+        super.solicitarInformacion(carreras); // llama a la lógica común
+    }
+
+    @Override
+    public String toString() {
+        return "Cuenta: " + cuenta + ", " + super.toString();
     }
 }
 ```
 
-#### Variables y métodos (HolaMundoVSCode)
-Demuestra los tipos de datos primitivos, constantes y la definición de métodos propios:
+**Polimorfismo en `App.java`:**
 ```java
-final double PI = 3.14159;
-int resultado = sumar(5, 3);
+Persona p1 = new Alumno();   // objeto Alumno tratado como Persona
+Persona p2 = new Maestro();  // objeto Maestro tratado como Persona
 
-public static int sumar(int a, int b) {
-    return a + b;
+ArrayList<Persona> personas = new ArrayList<>();
+personas.add(p1);
+personas.add(p2);
+
+// Cada persona llama su propia implementación de guardarInformacionEnArchivo()
+for (Persona p : personas) {
+    p.guardarInformacionEnArchivo("registro.txt");
 }
 ```
-
-#### Registro de Alumnos
-Ejercicio completo que combina:
-- Clase `Alumno` con atributos privados
-- Constructores (vacío y parametrizado)
-- Getters y Setters (encapsulamiento)
-- Método `solicitarInformacion()` con `JOptionPane`
-- `ArrayList<Alumno>` para almacenar múltiples objetos
-- Instanciación con `new`
 
 ---
 
@@ -583,6 +992,7 @@ Ejercicio completo que combina:
 - [OpenJDK](https://openjdk.org/)
 - [W3Schools Java Tutorial](https://www.w3schools.com/java/)
 - [Codecademy — Learn Java](https://www.codecademy.com/learn/learn-java)
+- [Mermaid — Diagramas en Markdown](https://mermaid.js.org/)
 
 ---
 

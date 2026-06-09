@@ -35,6 +35,7 @@ public class Alumno extends Persona {
         System.out.println(this.nombre + " " + this.apellido);
     }
 
+    @Override
     public void solicitarInformacion(ArrayList<Carrera> carreras) {
         this.cuenta = JOptionPane.showInputDialog("Ingrese el número de cuenta del alumno");
         super.solicitarInformacion(carreras);
@@ -74,4 +75,23 @@ public class Alumno extends Persona {
                "Clases Aprobadas: " + this.clasesAprobadas;
     }
     
+    @Override
+    public void guardarInformacionEnArchivo(String nombreArchivo) {
+        System.out.println("Guardando información del alumno en el archivo: " + nombreArchivo);
+    }
+
+    @Override
+    public void cargarInformacionDesdeArchivo(String nombreArchivo) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void actualizarInformacionEnArchivo(String nombreArchivo) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void eliminarInformacionEnArchivo(String nombreArchivo) {
+        // TODO Auto-generated method stub
+    }
 }

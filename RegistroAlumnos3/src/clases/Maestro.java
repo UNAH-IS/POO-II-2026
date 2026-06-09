@@ -68,5 +68,10 @@ public class Maestro extends Persona {
             this.horasTrabajadas = Integer.parseInt(JOptionPane.showInputDialog("Horas trabajadas:"));
             this.categoriaDocente = JOptionPane.showInputDialog("Categoria Docente:");
         }
+
+        @Override
+        public void guardarInformacionEnArchivo(String nombreArchivo) {
+            System.out.println("Guardando información del maestro en el archivo: " + nombreArchivo);
+        }
 }
 

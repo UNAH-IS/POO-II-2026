@@ -286,3 +286,55 @@ Polimorfismo:
 
 
     Poli: (muchos) + morfismo (formas) -> muchas formas
+
+
+Clases abstractas:
+    Son clases que no pueden ser instanciadas directamente, es decir, no se pueden crear objetos de una clase abstracta. 
+    Se utilizan como base para otras clases que sí pueden ser instanciadas. Las clases abstractas pueden contener métodos abstractos (sin implementación == sin cuerpo) que deben ser implementados por las subclases, así como métodos concretos (con implementación) que pueden ser heredados por las subclases.
+
+    A pesar de que no se pueden instanciar si pueden tener constructores, pero estos constructores solo pueden ser llamados desde las subclases a través de la palabra clave "super()".
+    Una clase puede tener o no metodos abstractos, pero si una clase tiene al menos un método abstracto, entonces la clase debe ser declarada como abstracta.
+    Los metodos abstractos no pueden tener un cuerpo, es decir, no pueden tener una implementación. Solo se declara la firma del método (nombre, tipo de retorno y parámetros) y se termina con un punto y coma (;), además se deben sobreescribir obligatoriamente en las clases hijas.
+
+    Ejemplo de clase abstracta:
+
+    public abstract class Persona {
+        private String nombre;
+        private String apellido;
+
+        public Persona(String nombre, String apellido) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+        }
+
+        public void mostrarNombreCompleto() {
+            System.out.println(this.nombre + " " + this.apellido);
+        }
+
+        public abstract void guardarInformacionEnArchivo(String nombreArchivo);
+    }
+
+Interfaces:
+    Son un tipo de referencia en Java similares a las clases abstractas, pero que define un conjunto de métodos abstractos (sin implementación) que una clase puede implementar. 
+    Las interfaces se utilizan para definir un contrato que las clases deben cumplir.
+    A diferencia de las clases abstractas, una clase puede implementar múltiples interfaces, lo que permite una forma de herencia múltiple en Java.
+    Todos los metodos de una interfaz son abstractos por defecto.
+    Todos los atributos de una interfaz son public static final por defecto, es decir, son constantes.
+    No se puede crear objetos de una interfaz.
+
+    Ejemplo de interfaz:
+
+    public interface Administrable {
+        public static final String NOMBRE_ARCHIVO = "informacion.txt"; // constante
+
+        void guardarInformacionEnArchivo(String nombreArchivo);
+        void cargarInformacionDesdeArchivo(String nombreArchivo);
+        void actualizarInformacionEnArchivo(String nombreArchivo);
+        void eliminarInformacionEnArchivo(String nombreArchivo);
+    }
+
+    Las interfaces se usan para:
+    -Definir un contrato que las clases deben cumplir, lo que promueve la consistencia y la interoperabilidad entre diferentes clases.
+    -Permitir la herencia múltiple.
+    -Facilitar la implementación de patrones de diseño como el patrón de estrategia, el patrón de observador, etc.
+    -Implementación de listeners o manejadores de eventos en aplicaciones gráficas.
