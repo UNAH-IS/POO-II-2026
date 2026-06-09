@@ -31,6 +31,12 @@ public class Alumno extends Persona {
         this.clasesAprobadas = clasesAprobadas;
     }
 
+    //Este constructor está sobrecardo 3 veces, el constructor vacío, el constructor con todos los parámetros y este constructor con solo el nombre y apellido, esto es un ejemplo de sobrecarga de constructores
+    public Alumno(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public void mostrarNombre() {
         System.out.println(this.nombre + " " + this.apellido);
     }

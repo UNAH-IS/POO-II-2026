@@ -338,3 +338,70 @@ Interfaces:
     -Permitir la herencia múltiple.
     -Facilitar la implementación de patrones de diseño como el patrón de estrategia, el patrón de observador, etc.
     -Implementación de listeners o manejadores de eventos en aplicaciones gráficas.
+
+
+Sobrecarga de métodos:
+    Es la capacidad de una clase para tener múltiples métodos con el mismo nombre pero con diferentes parámetros (tipo, número o ambos). 
+    La sobrecarga de métodos permite que un método realice diferentes tareas según los argumentos que se le pasen. El compilador determina qué método llamar en función de la firma del método (nombre y parámetros).
+
+    Ejemplo de sobrecarga de métodos:
+
+    public class Calculadora {
+        public int sumar(int a, int b) {
+            return a + b;
+        }
+
+        public double sumar(double a, double b) {
+            return a + b;
+        }
+
+        public int sumar(int a, int b, int c) {
+            return a + b + c;
+        }
+        //Error: No se puede sobrecargar un método solo por el tipo de retorno, es decir, no se pueden tener dos métodos con el mismo nombre y los mismos parámetros pero con diferente tipo de retorno.
+        public float sumar(int c, int d) {
+            return c + d;
+        }
+    }
+
+
+    //Ejemplo de invocación de métodos sobrecargados:
+
+    Calculadora calc = new Calculadora();
+    int resultado1 = calc.sumar(2, 3); // Llama al método sumar(int, int)
+    double resultado2 = calc.sumar(2.5, 3.5); //
+    int resultado3 = calc.sumar(1, 2, 3); // Llama al método sumar(int, int, int)
+
+    Sobrecarga es diferente a sobreescritura, la sobrecarga se refiere a tener múltiples métodos con el mismo nombre pero diferentes parámetros dentro de la misma clase, mientras que la sobreescritura se refiere a redefinir un método heredado de una clase padre en una clase hija para modificar su comportamiento.
+
+
+
+
+Expresiones regulares en Java
+    Son secuencias de caracteres que forman un patrón de búsqueda. Se utilizan para validar, buscar o manipular cadenas de texto. En Java, se pueden utilizar las clases Pattern y Matcher del paquete java.util.regex para trabajar con expresiones regulares.
+
+    Ejemplo para validar una identidad con el formato "0000-0000-00000":
+
+    String PATRON_IDENTIDAD = "\\d{4}-\\d{4}-\\d{5}";
+    Pattern pattern = Pattern.compile(PATRON_IDENTIDAD);
+    Matcher matcher = pattern.matcher("0801-2000-67890");
+
+
+    Patrones de expresiones regulares comunes:
+    - \\d: Coincide con cualquier dígito (0-9).
+    - \\w: Coincide con cualquier carácter alfanumérico (letras, dígitos y guiones bajos).
+    - \\s: Coincide con cualquier espacio en blanco (espacios, tabulaciones, saltos de línea).
+    - .: Coincide con cualquier carácter excepto un salto de línea.
+    - *: Coincide con cero o más ocurrencias del elemento anterior.
+    - +: Coincide con una o más ocurrencias del elemento anterior.
+    - ?: Coincide con cero o una ocurrencia del elemento anterior.
+    - {n}: Coincide exactamente con n ocurrencias del elemento anterior.
+    - {n,}: Coincide con n o más ocurrencias del elemento anterior.
+    - {n,m}: Coincide con al menos n y no más de m ocurrencias del elemento anterior.
+    - ^: Coincide con el inicio de la cadena.
+    - $: Coincide con el final de la cadena.
+    - |: Operador OR, coincide con cualquiera de los patrones separados por el símbolo.
+    - (): Agrupa patrones para aplicar operadores a todo el grupo.
+    
+
+    

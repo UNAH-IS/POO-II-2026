@@ -2,6 +2,8 @@ package clases;
 
 import interfaces.Administrable;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public abstract class Persona implements Administrable {
@@ -88,16 +90,33 @@ public abstract class Persona implements Administrable {
             listaCarreras += i + ". " + carreras.get(i).getNombreCarrera() + "\n";
         }
         
-        this.nombre = JOptionPane.showInputDialog("Ingrese el nombre del " + tipoObjeto);
+        do {
+            this.nombre = JOptionPane.showInputDialog("Ingrese el nombre del " + tipoObjeto);
+        } while (!validarCampo("[a-zA-Z ]+", this.nombre, "El nombre solo puede contener letras y espacios")); //validar que el nombre solo contenga letras y espacios
+
         this.apellido = JOptionPane.showInputDialog("Ingrese el apellido del " + tipoObjeto);
         this.edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del " + tipoObjeto));
-        this.identidad = JOptionPane.showInputDialog("Ingrese la identidad del " + tipoObjeto);
+        
+        do {
+            this.identidad = JOptionPane.showInputDialog("Ingrese la identidad del " + tipoObjeto);
+        } while (!validarCampo("\\d{4}-\\d{4}-\\d{5}", this.identidad, "La identidad debe tener el patron XXXX-XXXX-XXXXX")); //validar que la identidad tenga el formato correcto, en este caso 4 dígitos, un guion, 4 dígitos, un guion y 5 dígitos (ejemplo: 0801-2000-67890)
+
         this.genero = JOptionPane.showInputDialog("Ingrese el genero del " + tipoObjeto);
         
         int carreraSeleccionada = Integer.parseInt(JOptionPane.showInputDialog(listaCarreras));
         this.carrera = carreras.get(carreraSeleccionada);
 
         System.out.println("Carrera seleccionada: " + carreraSeleccionada);
+    }
+
+    public boolean validarCampo(String patron, String valor, String mensajeError) {
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(valor);
+        boolean resultado = matcher.matches();
+        if (!resultado) {
+            JOptionPane.showMessageDialog(null, mensajeError);
+        }
+        return resultado;  
     }
 
     @Override
