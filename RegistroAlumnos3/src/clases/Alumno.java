@@ -43,10 +43,28 @@ public class Alumno extends Persona {
 
     @Override
     public void solicitarInformacion(ArrayList<Carrera> carreras) {
-        this.cuenta = JOptionPane.showInputDialog("Ingrese el número de cuenta del alumno");
+        do {
+            this.cuenta = JOptionPane.showInputDialog("Ingrese el número de cuenta del alumno");
+        } while (!validarCampo("\\d{11}", this.cuenta, "El número de cuenta debe tener 11 dígitos")); //validar que el número de cuenta tenga 11 dígitos
+
         super.solicitarInformacion(carreras);
-        this.promedio = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el promedio del alumno"));
-        this.clasesAprobadas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de clases aprobadas del alumno"));
+        do {
+            try {
+                this.promedio = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el promedio del alumno"));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El promedio debe ser un número decimal");
+                this.promedio = -1;
+            }
+        } while (this.promedio < 0 || this.promedio > 100); //validar que el promedio sea un número entre 0 y 100
+
+        do {
+            try {
+                this.clasesAprobadas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de clases aprobadas del alumno"));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "La cantidad de clases aprobadas debe ser un número entero");
+                this.clasesAprobadas = -1;
+            }
+        } while (this.clasesAprobadas < 0); //validar que la cantidad de clases aprobadas sea un número entero positivo
     }
 
     public String getCuenta() {

@@ -94,19 +94,36 @@ public abstract class Persona implements Administrable {
             this.nombre = JOptionPane.showInputDialog("Ingrese el nombre del " + tipoObjeto);
         } while (!validarCampo("[a-zA-Z ]+", this.nombre, "El nombre solo puede contener letras y espacios")); //validar que el nombre solo contenga letras y espacios
 
-        this.apellido = JOptionPane.showInputDialog("Ingrese el apellido del " + tipoObjeto);
-        this.edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del " + tipoObjeto));
-        
+        do {
+            this.apellido = JOptionPane.showInputDialog("Ingrese el apellido del " + tipoObjeto);
+        } while (!validarCampo("[a-zA-Z ]+", this.apellido, "El apellido solo puede contener letras y espacios")); //validar que el apellido solo contenga letras y espacios
+
+        do {
+            try {
+                this.edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del " + tipoObjeto));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "La edad debe ser un número entero");
+                System.out.println("Error al convertir la edad a número entero: " + edad);
+            }
+        } while (this.edad <= 0); //validar que la edad sea un número entero positivo
+
         do {
             this.identidad = JOptionPane.showInputDialog("Ingrese la identidad del " + tipoObjeto);
         } while (!validarCampo("\\d{4}-\\d{4}-\\d{5}", this.identidad, "La identidad debe tener el patron XXXX-XXXX-XXXXX")); //validar que la identidad tenga el formato correcto, en este caso 4 dígitos, un guion, 4 dígitos, un guion y 5 dígitos (ejemplo: 0801-2000-67890)
 
-        this.genero = JOptionPane.showInputDialog("Ingrese el genero del " + tipoObjeto);
-        
-        int carreraSeleccionada = Integer.parseInt(JOptionPane.showInputDialog(listaCarreras));
-        this.carrera = carreras.get(carreraSeleccionada);
+        do {
+            this.genero = JOptionPane.showInputDialog("Ingrese el genero del " + tipoObjeto);
+        } while (!validarCampo("(Masculino|Femenino)", this.genero, "El genero solo puede ser Femenino o Masculino"));
 
-        System.out.println("Carrera seleccionada: " + carreraSeleccionada);
+        do {
+            int carreraSeleccionada = Integer.parseInt(JOptionPane.showInputDialog(listaCarreras));
+            if (carreraSeleccionada < 0 || carreraSeleccionada >= carreras.size()) {
+                JOptionPane.showMessageDialog(null, "Seleccione una carrera válida");
+                this.carrera = null; // Reiniciar la carrera para forzar la selección nuevamente
+            } else {
+                this.carrera = carreras.get(carreraSeleccionada);
+            }
+        } while (this.carrera == null);
     }
 
     public boolean validarCampo(String patron, String valor, String mensajeError) {
