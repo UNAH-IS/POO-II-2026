@@ -1,0 +1,19 @@
+JavaFX
+
+Toda aplicacion en javafx debe extender de la clase Application, y sobreescribir el metodo start, que es el punto de entrada de la aplicacion.
+
+Stage: Es la ventana principal de la aplicacion, es el contenedor principal de la aplicacion, y es el encargado de mostrar la escena.
+
+Patron de desarrollo 
+MVC (Modelo-Vista-Controlador) es un patrón de diseño de software que se utiliza para organizar el código de una aplicación en tres componentes principales: el Modelo, la Vista y el Controlador. Este patrón ayuda a separar las responsabilidades y facilita el mantenimiento y la escalabilidad de la aplicación.
+
+Modelo: El Modelo representa la lógica de negocio y los datos de la aplicación. Es responsable de gestionar el estado de la aplicación, realizar operaciones de negocio y acceder a la base de datos o a otras fuentes de datos. El Modelo no tiene conocimiento de la interfaz de usuario ni de cómo se presentan los datos.
+
+Vista: La Vista es responsable de la presentación de la información al usuario. Se encarga de mostrar los datos del Modelo de una manera visual y atractiva. La Vista no tiene conocimiento de la lógica de negocio ni de cómo se gestionan los datos, solo se preocupa por la apariencia y la interacción con el usuario.
+
+Controlador: El Controlador actúa como intermediario entre el Modelo y la Vista. Es responsable de recibir las entradas del usuario, procesarlas y actualizar el Modelo en consecuencia. El Controlador también puede actualizar la Vista para reflejar los cambios en el Modelo. El Controlador no tiene conocimiento de cómo se presentan los datos ni de la lógica de negocio, solo se encarga de coordinar las interacciones entre el Modelo y la Vista. Cada vista debería tener su propio controlador para manejar las interacciones específicas de esa vista. Esto ayuda a mantener el código organizado y facilita la gestión de las diferentes partes de la aplicación.
+
+
+
+Listeners en Java para gestion de eventos: Un listener es un objeto que espera y responde a eventos específicos en una aplicación. En Java, los listeners se utilizan para manejar eventos generados por componentes de la interfaz de usuario, como botones. 
+Los listeners se implementan mediante interfaces que definen métodos que se ejecutan cuando ocurre un evento. Por ejemplo, un ActionListener se utiliza para manejar eventos de acción, como hacer clic en un botón. Cuando el usuario realiza una acción, el listener correspondiente se activa y ejecuta el código definido en su método.
