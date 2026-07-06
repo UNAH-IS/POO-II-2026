@@ -5,12 +5,9 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -23,80 +20,75 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unah.RegistroMaestrosController">
    <children>
-      <SplitPane dividerPositions="0.5039221838719798" layoutX="48.0" layoutY="47.0" orientation="VERTICAL" prefHeight="590.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5651082522748665" layoutX="48.0" layoutY="47.0" orientation="VERTICAL" prefHeight="590.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <GridPane layoutX="14.0" layoutY="14.0" prefHeight="289.0" prefWidth="398.0">
+                  <GridPane layoutX="14.0" layoutY="14.0" prefHeight="330.0" prefWidth="398.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="194.20001220703125" minWidth="10.0" prefWidth="136.8" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.3999938964844" minWidth="10.0" prefWidth="262.4" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Cuenta:">
+                        <Label text="Nombre:">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Nombre:" GridPane.rowIndex="1">
+                        <Label text="Apellido:" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Apellido:" GridPane.rowIndex="2">
+                        <Label text="Edad:" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Edad:" GridPane.rowIndex="3">
+                        <Label text="Carrera:" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Carrera:" GridPane.rowIndex="4">
+                        <Label text="Identidad:" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Identidad:" GridPane.rowIndex="5">
+                        <Label text="Genero:" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Genero:" GridPane.rowIndex="6">
+                        <Label text="Sueldo" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Promedio:" GridPane.rowIndex="7">
+                        <Label text="Clases Impartidas:" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets right="3.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Clases Aprobadas:" GridPane.rowIndex="8">
-                           <GridPane.margin>
-                              <Insets right="3.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <TextField fx:id="txtCuenta" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtEdad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <ComboBox fx:id="cboCarreras" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="txtIdentidad" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtEdad" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cboCarreras" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtIdentidad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
                               <RadioButton fx:id="rbFemenino" mnemonicParsing="false" text="Femenino">
                                  <toggleGroup>
@@ -105,46 +97,29 @@
                               <RadioButton fx:id="rbMasculino" mnemonicParsing="false" text="Masculino" toggleGroup="$grpGenero" />
                            </children>
                         </HBox>
-                        <Spinner fx:id="spnClasesAprobadas" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="txtPromedio" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Spinner fx:id="spnClasesImpartidas" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="txtSueldo" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <DatePicker fx:id="dpFechaNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Label text="Fecha de nacimiento:" GridPane.rowIndex="9" />
+                        <Label text="Horas Trabajadas" GridPane.rowIndex="8" />
+                        <TextField fx:id="txtHorasTrabajadas" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label text="Categoria Docente:" GridPane.rowIndex="10" />
+                        <ComboBox fx:id="cboCategoriasDocentes" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                      </children>
                   </GridPane>
                   <VBox layoutX="432.0" layoutY="14.0" prefHeight="226.0" prefWidth="158.0" spacing="7.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#limpiarCampos" prefHeight="26.0" prefWidth="161.0" text="Nuevo" />
-                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarAlumno" prefHeight="26.0" prefWidth="163.0" text="Guardar" />
-                        <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" onAction="#actualizarAlumno" prefHeight="26.0" prefWidth="162.0" text="Actualizar" />
-                        <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#eliminarAlumno" prefHeight="26.0" prefWidth="159.0" text="Eliminar" />
+                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarMaestro" prefHeight="26.0" prefWidth="163.0" text="Guardar" />
+                        <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" onAction="#actualizarMaestro" prefHeight="26.0" prefWidth="162.0" text="Actualizar" />
+                        <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#eliminarMaestro" prefHeight="26.0" prefWidth="159.0" text="Eliminar" />
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TabPane prefHeight="313.6" prefWidth="598.4" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <tabs>
-                      <Tab text="List View">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <ListView fx:id="lstAlumnos" layoutX="14.0" prefHeight="284.8" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Table View">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TableView fx:id="tblAlumnos" layoutX="38.0" layoutY="14.0" prefHeight="284.8" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                    </tabs>
-                  </TabPane>
+                  <TableView fx:id="tblMaestros" prefHeight="274.4" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

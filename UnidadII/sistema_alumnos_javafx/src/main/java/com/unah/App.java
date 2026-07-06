@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import com.unah.clases.Alumno;
 import com.unah.clases.Carrera;
+import com.unah.clases.Maestro;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -22,6 +23,8 @@ public class App extends Application {
     private static Scene scene;
     public static ObservableList<Carrera> carreras = FXCollections.observableArrayList();
     public static ObservableList<Alumno> alumnos = FXCollections.observableArrayList();
+    public static ObservableList<Maestro> maestros = FXCollections.observableArrayList();
+    public static ObservableList<String> categoriasDocentes = FXCollections.observableArrayList();
 
     private static Stage formularioAlumnos;
     private static Stage formularioMaestros;
@@ -33,6 +36,7 @@ public class App extends Application {
         formularioPrincipal.setScene(scene);
         cargarCarreras();
         cargarAlumnos();
+        cargarCategoriasDocentes();
         formularioPrincipal.show();
     }
 
@@ -77,6 +81,15 @@ public class App extends Application {
         alumnos.add(new Alumno("Juan", "Perez", 20, carreras.get(0), "0801-1990-12345", "Masculino", "123456789", 85.5f, 30, LocalDate.of(2000, 10, 15)));
         alumnos.add(new Alumno("Maria", "Gonzalez", 22, carreras.get(1), "0801-1998-54321", "Femenino", "987654321", 90.0f, 35, LocalDate.of(2001, 5, 20)));
         alumnos.add(new Alumno("Pedro", "Lopez", 21, carreras.get(2), "0801-1995-67890", "Masculino", "456789123", 75.0f, 25, LocalDate.of(2002, 3, 10)));
+    }
+
+    public void cargarCategoriasDocentes() {
+        categoriasDocentes.add("Titular I");
+        categoriasDocentes.add("Titular II");
+        categoriasDocentes.add("Titular III");
+        categoriasDocentes.add("Auxiliar");
+        categoriasDocentes.add("Por Hora");
+        categoriasDocentes.add("Horario Parcial");
     }
 
     static void setRoot(String fxml) throws IOException {

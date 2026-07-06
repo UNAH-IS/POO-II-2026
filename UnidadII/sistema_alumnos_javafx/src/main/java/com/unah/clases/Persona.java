@@ -120,8 +120,6 @@ public abstract class Persona {
             errores.add("La fecha de nacimiento no puede estar vacía");
         }
 
-        
-
         return errores;
     }
 
