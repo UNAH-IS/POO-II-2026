@@ -1,0 +1,1 @@
+Hola, este es un ejemplo de escritura de archivos con flujos basados en bytes.
